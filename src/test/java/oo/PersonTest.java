@@ -30,7 +30,7 @@ public class PersonTest {
         Person attacker = new Person("张三", 100, 10);
         Person victim = new Person("李四", 80, 20);
 
-        assertThat(attacker.attack(victim), is("张三攻击了李四，李四受到了10点伤害，李四剩余生命：70"));
+        assertThat(attacker.attack(victim), is("普通人张三攻击了普通人李四，李四受到了10点伤害，李四剩余生命：70"));
     }
 
     @Test

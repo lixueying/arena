@@ -25,14 +25,26 @@ public class Person {
         return damage;
     }
 
-    public String attack(Person victim) {
-        return format("%s攻击了%s，%s", name, victim.name, victim.beAttacked(damage));
+    public String getRole() {
+        return "普通人";
     }
 
-    private String beAttacked(int damage) {
-        blood -= damage;
+    public String attack(Person victim) {
+        return format("%s攻击了%s，%s", attackIdentify(), victim.beAttackedIdentify(), victim.beAttacked(damage));
+    }
+
+    private String beAttackedIdentify() {
+        return format("%s%s", getRole(), name);
+    }
+
+    private String attackIdentify() {
+        return format("%s%s", getRole(), name);
+    }
+
+    private String beAttacked(int damageFromAttacker) {
+        blood -= damageFromAttacker;
         return format("%s受到了%d点伤害，%s剩余生命：%d",
-                name, damage, name, blood);
+                name, damageFromAttacker, name, blood);
     }
 
     public boolean isAlive() {
