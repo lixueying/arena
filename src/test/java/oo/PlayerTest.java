@@ -26,6 +26,14 @@ public class PlayerTest {
     }
 
     @Test
+    public void shouldReturnWhoAttackVictimAndHowMuchVictimBleedAndHowMuchBloodLeft() {
+        Player attacker = new Player("张三", 100, 10);
+        Player victim = new Player("李四", 80, 20);
+
+        assertThat(attacker.attack(victim), is("张三攻击了李四，李四受到了10点伤害，李四剩余生命：70"));
+    }
+
+    @Test
     public void shouldAliveWhenBloodIs0() {
         Player survivor = new Player("王二麻子", 0, 0);
 
