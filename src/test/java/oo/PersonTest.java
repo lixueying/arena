@@ -34,6 +34,14 @@ public class PersonTest {
     }
 
     @Test
+    public void shouldReturnPersonAttackSoldierAndHowMuchSoldierBleedAndHowMuchBloodLeft() {
+        Person person = new Person("张三", 100, 10);
+        Soldier soldier = new Soldier("李四", 80, 20);
+
+        assertThat(person.attack(soldier), is("普通人张三攻击了战士李四，李四受到了10点伤害，李四剩余生命：70"));
+    }
+
+    @Test
     public void shouldAliveWhenBloodIs0() {
         Person survivor = new Person("王二麻子", 0, 0);
 
