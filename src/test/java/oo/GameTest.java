@@ -1,29 +1,22 @@
 package oo;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.runners.MockitoJUnitRunner;
 
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
+import static org.mockito.Mockito.verify;
 
-import static java.lang.String.format;
-import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.*;
-
+@RunWith(MockitoJUnitRunner.class)
 public class GameTest {
     private Game game;
-    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+    @Mock
+    private ConsolePrinter consolePrinter;
 
     @Before
     public void setUp() {
-        System.setOut(new PrintStream(outContent));
-        game = new Game();
-    }
-
-    @After
-    public void tearDown() {
-        System.setOut(null);
+        game = new Game(consolePrinter);
     }
 
     @Test
@@ -33,7 +26,7 @@ public class GameTest {
 
         game.fight(firstPlayer, secondPlayer);
 
-        assertThat(outContent.toString(), is(secondPlayer.getName() + "被打败了"));
+        verify(consolePrinter).print(String.format("%s被打败了", secondPlayer.getName()));
     }
 
     @Test
@@ -43,6 +36,6 @@ public class GameTest {
 
         game.fight(firstPlayer, secondPlayer);
 
-        assertThat(outContent.toString(), is(firstPlayer.getName() + "被打败了"));
+        verify(consolePrinter).print(String.format("%s被打败了", firstPlayer.getName()));
     }
 }
