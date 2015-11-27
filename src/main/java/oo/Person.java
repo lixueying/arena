@@ -5,7 +5,7 @@ import static java.lang.String.format;
 public class Person {
     private String name;
     private int blood;
-    private int damage;
+    protected int damage;
 
     public Person(String name, int blood, int damage) {
         this.name = name;
@@ -30,14 +30,14 @@ public class Person {
     }
 
     public String attack(Person victim) {
-        return format("%s攻击了%s，%s", attackerIdentify(), victim.victimerIdentify(), victim.beAttacked(damage));
+        return format("%s攻击了%s，%s", attackIdentify(), victim.beAttackedIdentify(), victim.beAttacked(damage));
     }
 
-    private String victimerIdentify() {
+    private String beAttackedIdentify() {
         return format("%s%s", getRole(), name);
     }
 
-    private String attackerIdentify() {
+    protected String attackIdentify() {
         return format("%s%s", getRole(), name);
     }
 
