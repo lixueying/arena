@@ -15,7 +15,7 @@ public class Game {
         Player loser = attacker;
 
         while (attacker.isAlive()) {
-            attacker.attack(victim);
+            consolePrinter.print(format("%s\n", attacker.attack(victim)));
             loser = victim;
             victim = attacker;
             attacker = loser;
