@@ -2,12 +2,12 @@ package oo;
 
 import static java.lang.String.format;
 
-public class Player {
+public class Person {
     private String name;
     private int blood;
     private int damage;
 
-    public Player(String name, int blood, int damage) {
+    public Person(String name, int blood, int damage) {
         this.name = name;
         this.blood = blood;
         this.damage = damage;
@@ -25,7 +25,7 @@ public class Player {
         return damage;
     }
 
-    public String attack(Player victim) {
+    public String attack(Person victim) {
         return format("%s攻击了%s，%s", name, victim.name, victim.beAttacked(damage));
     }
 

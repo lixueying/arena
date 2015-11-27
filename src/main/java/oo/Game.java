@@ -9,10 +9,10 @@ public class Game {
         this.consolePrinter = consolePrinter;
     }
 
-    public void fight(Player firstPlayer, Player secondPlayer) {
-        Player attacker = firstPlayer;
-        Player victim = secondPlayer;
-        Player loser = attacker;
+    public void fight(Person firstPerson, Person secondPerson) {
+        Person attacker = firstPerson;
+        Person victim = secondPerson;
+        Person loser = attacker;
 
         while (attacker.isAlive()) {
             consolePrinter.print(format("%s\n", attacker.attack(victim)));

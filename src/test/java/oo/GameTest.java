@@ -25,10 +25,10 @@ public class GameTest {
 
     @Test
     public void shouldSecondPlayerLoseWhenFirstPlayerIsPowerful() {
-        Player firstPlayer = new Player("张三", 10, 10);
-        Player secondPlayer = new Player("李四", 9, 10);
+        Person firstPerson = new Person("张三", 10, 10);
+        Person secondPerson = new Person("李四", 9, 10);
 
-        game.fight(firstPlayer, secondPlayer);
+        game.fight(firstPerson, secondPerson);
 
         inOrder.verify(consolePrinter, times(1)).print("张三攻击了李四，李四受到了10点伤害，李四剩余生命：-1\n");
         inOrder.verify(consolePrinter, times(1)).print("李四被打败了");
@@ -36,10 +36,10 @@ public class GameTest {
 
     @Test
     public void shouldFirstPlayerLoseWhenSecondPlayerIsPowerful() {
-        Player firstPlayer = new Player("张三", 10, 8);
-        Player secondPlayer = new Player("李四", 20, 9);
+        Person firstPerson = new Person("张三", 10, 8);
+        Person secondPerson = new Person("李四", 20, 9);
 
-        game.fight(firstPlayer, secondPlayer);
+        game.fight(firstPerson, secondPerson);
 
         inOrder.verify(consolePrinter, times(1)).print("张三攻击了李四，李四受到了8点伤害，李四剩余生命：12\n");
         inOrder.verify(consolePrinter, times(1)).print("李四攻击了张三，张三受到了9点伤害，张三剩余生命：1\n");
