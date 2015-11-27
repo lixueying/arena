@@ -26,9 +26,13 @@ public class Player {
     }
 
     public String attack(Player victim) {
-        victim.blood -= damage;
-        return format("%s攻击了%s，%s受到了%d点伤害，%s剩余生命：%d",
-                name, victim.name, victim.name, damage, victim.name, victim.blood);
+        return format("%s攻击了%s，%s", name, victim.name, victim.beAttacked(damage));
+    }
+
+    private String beAttacked(int damage) {
+        blood -= damage;
+        return format("%s受到了%d点伤害，%s剩余生命：%d",
+                name, damage, name, blood);
     }
 
     public boolean isAlive() {
