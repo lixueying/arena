@@ -8,6 +8,8 @@ public class Soldier extends Person {
 
     public Soldier(String name, int blood, int damage) {
         super(name, blood, damage);
+        this.armor = NoArmor.getInstance();
+        this.weapon = NoWeapon.getInstance();
     }
 
     @Override
@@ -21,11 +23,7 @@ public class Soldier extends Person {
 
     @Override
     protected int bleed(int damageFromAttacker) {
-        if (null != armor) {
-            return (damageFromAttacker > armor.getWeakenDamage()) ? damageFromAttacker - armor.getWeakenDamage() : 0;
-        } else {
-            return damageFromAttacker;
-        }
+        return (damageFromAttacker > armor.getWeakenDamage()) ? damageFromAttacker - armor.getWeakenDamage() : 0;
     }
 
     public void wearWeapon(Weapon weapon) {
@@ -35,10 +33,6 @@ public class Soldier extends Person {
 
     @Override
     protected String attackIdentify() {
-        if (null != weapon) {
-            return format("%s%s", super.attackIdentify(), weapon.beUsed());
-        } else {
-            return super.attackIdentify();
-        }
+        return format("%s%s", super.attackIdentify(), weapon.beUsed());
     }
 }
