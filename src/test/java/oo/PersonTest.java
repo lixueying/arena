@@ -42,6 +42,16 @@ public class PersonTest {
     }
 
     @Test
+    public void shouldBleedIsPersonDamageMinusSoldierArmorWeakenDamage() {
+        Person person = new Person("张三", 100, 10);
+        Soldier soldier = new Soldier("李四", 80, 20);
+        Armor armor = new Armor("金丝软甲", 5);
+        soldier.wearArmor(armor);
+
+        assertThat(person.attack(soldier), is("普通人张三攻击了战士李四，李四受到了5点伤害，李四剩余生命：75"));
+    }
+
+    @Test
     public void shouldAliveWhenBloodIs0() {
         Person survivor = new Person("王二麻子", 0, 0);
 
