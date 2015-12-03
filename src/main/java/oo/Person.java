@@ -45,7 +45,7 @@ public class Person {
         int bleed = bleed(damageFromAttacker);
         blood -= bleed;
         return format("%s受到了%d点伤害，%s剩余生命：%d",
-                name, bleed, name, blood);
+                name, bleed , name, blood);
     }
 
     protected int bleed(int damageFromAttacker) {

@@ -21,12 +21,12 @@ public class SoldierTest {
     }
 
     @Test
-    public void shouldSoldierCanAttackPersonWithoutAnyWeaponAndArmor() {
+    public void should_Soldier_Can_Attack_Person_Without_Any_Weapon_And_Armor() {
         assertThat(soldier.attack(person), is("战士张三攻击了普通人李四，李四受到了10点伤害，李四剩余生命：90"));
     }
 
     @Test
-    public void shouldTheDamageShouldNotChangeAfterSoldierWearArmor() {
+    public void should_The_Damage_ShouldNot_Change_After_Soldier_Wear_Armor() {
         int damageBeforeWearArmor = soldier.getDamage();
         soldier.wearArmor(armor);
         int damageAfterWearArmor = soldier.getDamage();
@@ -35,7 +35,7 @@ public class SoldierTest {
     }
 
     @Test
-    public void shouldSoldierCanWearWeaponAndImproveAttackPower() {
+    public void should_Soldier_Can_Wear_Weapon_And_Improve_AttackPower() {
         int damageBeforeWearWeapon = soldier.getDamage();
 
         soldier.wearWeapon(weapon);
@@ -44,9 +44,8 @@ public class SoldierTest {
     }
 
     @Test
-    public void shouldPrintSoldierUseWeaponAttackedPersonWhenSoldierWoreWeapon() {
+    public void should_Print_Soldier_Use_Weapon_Attacked_Person_When_Soldier_Wore_Weapon() {
         soldier.wearWeapon(weapon);
-
         assertThat(soldier.attack(person), is("战士张三用屠龙刀攻击了普通人李四，李四受到了20点伤害，李四剩余生命：80"));
     }
 }

@@ -5,11 +5,13 @@ import static java.lang.String.format;
 public class Soldier extends Person {
     private Armor armor;
     private Weapon weapon;
+    private WeaponSkill weaponSkill;
 
     public Soldier(String name, int blood, int damage) {
         super(name, blood, damage);
         this.armor = NoArmor.getInstance();
         this.weapon = NoWeapon.getInstance();
+        this.weaponSkill = NoWeaponSkill.getInstance();
     }
 
     @Override
@@ -28,7 +30,7 @@ public class Soldier extends Person {
 
     public void wearWeapon(Weapon weapon) {
         this.weapon = weapon;
-        this.damage += weapon.getDamage();
+        this.damage =this.damage + weapon.getDamage();
     }
 
     @Override

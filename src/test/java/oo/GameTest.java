@@ -24,7 +24,7 @@ public class GameTest {
     }
 
     @Test
-    public void shouldSecondPlayerLoseWhenFirstPlayerIsPowerful() {
+    public void should_SecondPlayer_Lose_When_FirstPlayer_Is_Powerful() {
         Person firstPerson = new Person("张三", 10, 10);
         Person secondPerson = new Person("李四", 9, 10);
 
@@ -35,7 +35,7 @@ public class GameTest {
     }
 
     @Test
-    public void shouldFirstPlayerLoseWhenSecondPlayerIsPowerful() {
+    public void should_FirstPlayer_Lose_When_SecondPlayer_Is_Powerful() {
         Person firstPerson = new Person("张三", 10, 8);
         Person secondPerson = new Person("李四", 20, 9);
 
