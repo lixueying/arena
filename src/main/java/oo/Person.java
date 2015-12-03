@@ -6,6 +6,7 @@ public class Person {
     private String name;
     private int blood;
     protected int damage;
+    private Poison poison;
 
     public Person(String name, int blood, int damage) {
         this.name = name;
@@ -44,8 +45,8 @@ public class Person {
     private String beAttacked(int damageFromAttacker) {
         int bleed = bleed(damageFromAttacker);
         blood -= bleed;
-        return format("%s受到了%d点伤害，%s剩余生命：%d",
-                name, bleed , name, blood);
+        return format("%s受到了%d点伤害，%s中毒了，%s剩余生命：%d, %s受到%d点毒性伤害, %s剩余生命: %d",
+                name, bleed, name, name, blood, name, 2, name, blood-2);
     }
 
     protected int bleed(int damageFromAttacker) {

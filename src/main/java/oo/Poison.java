@@ -5,18 +5,21 @@ import static java.lang.String.format;
 /**
  * Created by lixueying on 15/12/3.
  */
-public class Poison extends Weapon{
+public class Poison{
     private int poisonDamage;
-    public Poison(String name, int damage) {
-        super(name, damage);
+    private String name;
+
+    public Poison(String name, int poisonDamage) {
+        this.name = name;
+        this.poisonDamage = poisonDamage;
     }
 
-    public String bePoisoned(Person victim){
-        return format("%s中毒了",victim.getName());
+    public String getName() {
+        return name;
     }
 
-    public String poisonousDamage(Person victim){
-        return format("%s受到%d毒性伤害",victim.getName(), poisonDamage);
-    }
 
+    public int getPoisonDamage() {
+        return poisonDamage;
+    }
 }
