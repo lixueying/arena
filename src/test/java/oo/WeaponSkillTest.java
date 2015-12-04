@@ -41,7 +41,7 @@ public class WeaponSkillTest {
     @Test
     public void should_return_can_attack_with_weapon_when_weapon_has_posion_damage(){
         soldier.wearWeapon(weapon);
-        assertThat(soldier.attack(person)+"，"+soldier.beSkillAttacked(person, weaponSkill), is("战士张三用屠龙刀攻击了普通人李四，" +
-                "李四受到了20点伤害，李四中毒了，李四剩余生命：80，李四受到2点毒性伤害, 李四剩余生命：78"));
+        assertThat(soldier.attack(person)+soldier.beSkillAttacked(person, weaponSkill), is("战士张三用屠龙刀攻击了普通人李四，" +
+                "李四受到了20点伤害，李四剩余生命：80，李四中毒了，李四受到2点毒性伤害, 李四剩余生命：78"));
     }
 }

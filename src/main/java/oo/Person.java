@@ -30,7 +30,7 @@ public class Person {
     }
 
     public String attack(Person victim) {
-        return format("%s攻击了%s，%s", attackIdentify(), victim.beAttackedIdentify(), victim.beAttacked(damage));
+        return format("%s攻击了%s，%s", attackIdentify(), victim.beAttackedIdentify(), victim.beAttacked(victim,damage));
     }
 
     private String beAttackedIdentify() {
@@ -41,7 +41,7 @@ public class Person {
         return format("%s%s", getRole(), name);
     }
 
-    protected String beAttacked(int damageFromAttacker) {
+    protected String beAttacked(Person victim, int damageFromAttacker) {
         int bleed = bleed(damageFromAttacker);
         blood -= bleed;
         return format("%s受到了%d点伤害，%s剩余生命：%d",

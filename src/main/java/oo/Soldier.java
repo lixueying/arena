@@ -41,8 +41,7 @@ public class Soldier extends Person {
         int blood = victim.getBlood();
         int damage = weaponSkill.getDamage();
         blood -= damage;
-        return format("%s受到%d点毒性伤害, %s剩余生命：%d", victim.getName(), damage, victim.getName(), blood);
+        return format("%s%s受到%d点毒性伤害, %s剩余生命：%d", weaponSkill.beTrigger(victim), victim.getName(), damage, victim.getName(), blood);
     }
-
 
 }

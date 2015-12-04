@@ -6,10 +6,16 @@ package oo;
 public class Poison {
     private String name;
     private int damage;
+    private String detail;
 
-    public Poison(String name, int damage){
+    public Poison(String name, int damage, String detail){
         this.name = name;
         this.damage = damage;
+        this.detail = detail;
+    }
+
+    public String getDetail() {
+        return detail;
     }
 
     public String getName() {

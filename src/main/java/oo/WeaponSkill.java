@@ -22,7 +22,7 @@ public class WeaponSkill {
         return name;
     }
 
-    public String beTrigger(){//触发武器技能
-        return format("%s",name);
+    public String beTrigger(Person victim){//触发武器技能
+        return format("，%s%s，",victim.getName(), name);
     }
 }
