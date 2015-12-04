@@ -8,10 +8,16 @@ import static java.lang.String.format;
 public class WeaponSkill {
     private int damage;
     private String name;
+    private String detail;
 
-    public WeaponSkill(String name, int damage){
+    public WeaponSkill(String name, int damage, String detail){
         this.name = name;
         this.damage = damage;
+        this.detail = detail;
+    }
+
+    public String getDetail() {
+        return detail;
     }
 
     public int getDamage() {
@@ -23,6 +29,6 @@ public class WeaponSkill {
     }
 
     public String beTrigger(Person victim){//触发武器技能
-        return format("，%s%s，",victim.getName(), name);
+        return format("，%s%s，",victim.getName(), detail);
     }
 }

@@ -18,8 +18,6 @@ public class WeaponSkillTest {
     public void setUp(){
         this.soldier = new Soldier("张三", 100, 10);
         this.person = new Person("李四", 100, 10);
-        weapon = new Weapon("屠龙刀", 10);
-        weaponSkill = new WeaponSkill("中毒了",2);
     }
     @Test
     public void should_return_can_attack_no_weapon_and_posion_damage(){
@@ -28,20 +26,35 @@ public class WeaponSkillTest {
 
     @Test
     public void should_return_can_attack_with_weapon_but_no_posion(){
+        weapon = new Weapon("屠龙刀", 10);
         soldier.wearWeapon(weapon);
         assertThat(soldier.attack(person), is("战士张三用屠龙刀攻击了普通人李四，李四受到了20点伤害，李四剩余生命：80"));
     }
 
     @Test
-    public void should_return_weaponSkill_damage(){
+    public void should_return_poison_damage(){
+        weapon = new Weapon("屠龙刀", 10);
+        weaponSkill = new WeaponSkill("毒性伤害",2,"中毒了");
         soldier.wearWeapon(weapon);
-        assertThat(soldier.beSkillAttacked(person,weaponSkill), is("李四受到2点毒性伤害, 李四剩余生命：98"));
+        assertThat(soldier.beSkillAttacked(person,weaponSkill), is("，李四中毒了，李四受到2点毒性伤害, 李四剩余生命：98"));
     }
 
     @Test
-    public void should_return_can_attack_with_weapon_when_weapon_has_posion_damage(){
+    public void should_return_can_attack_with_weapon_when_weapon_has_poison_damage(){
+        weapon = new Weapon("屠龙刀", 10);
+        weaponSkill = new WeaponSkill("毒性伤害",2,"中毒了");
         soldier.wearWeapon(weapon);
         assertThat(soldier.attack(person)+soldier.beSkillAttacked(person, weaponSkill), is("战士张三用屠龙刀攻击了普通人李四，" +
                 "李四受到了20点伤害，李四剩余生命：80，李四中毒了，李四受到2点毒性伤害, 李四剩余生命：78"));
+    }
+
+    @Test
+    public void should_return_fire_damage(){
+        weapon = new Weapon("火焰枪",10);
+        weaponSkill = new WeaponSkill("火焰伤害",1,"着火了");
+        soldier.wearWeapon(weapon);
+
+        assertThat(soldier.attack(person)+soldier.beSkillAttacked(person, weaponSkill), is("战士张三用火焰枪攻击了普通人李四，" +
+                "李四受到了20点伤害，李四剩余生命：80，李四着火了，李四受到1点火焰伤害, 李四剩余生命：79"));
     }
 }
