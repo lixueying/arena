@@ -3,37 +3,45 @@ package oo;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.hamcrest.core.Is.is;
+import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 /**
- * Created by lixueying on 15/12/3.
+ * Created by lixueying on 15/12/4.
  */
 public class WeaponSkillTest {
-    private Person person;
     private Soldier soldier;
+    private Person person;
     private Weapon weapon;
-    private Poison poison;
-
+    private WeaponSkill weaponSkill;
     @Before
     public void setUp(){
-        person = new Person("李四",100,10);
-        soldier = new Soldier("张三",100,10);
+        this.soldier = new Soldier("张三", 100, 10);
+        this.person = new Person("李四", 100, 10);
         weapon = new Weapon("屠龙刀", 10);
-        poison = new Poison("中毒了", 2);
+        weaponSkill = new WeaponSkill("中毒了",2);
+    }
+    @Test
+    public void should_return_can_attack_no_weapon_and_posion_damage(){
+        assertThat(soldier.attack(person), is("战士张三攻击了普通人李四，李四受到了10点伤害，李四剩余生命：90"));
     }
 
     @Test
-    public void should_create_a_weapon_with_poison(){
-        weapon.wearPoison(poison);
-        assertThat(weapon.getExDamage(), is(poison.getPoisonDamage()));
-    }
-
-    @Test
-    public void should_print_Soldier_attack_Person_with_Poison_damage(){
-        weapon.wearPoison(poison);
+    public void should_return_can_attack_with_weapon_but_no_posion(){
         soldier.wearWeapon(weapon);
-        assertThat(soldier.attack(person), is("战士张三用屠龙刀攻击了普通人李四，李四受到了20点伤害，" +
-                "李四中毒了，李四剩余生命：80, 李四受到2点毒性伤害, 李四剩余生命: 78"));
+        assertThat(soldier.attack(person), is("战士张三用屠龙刀攻击了普通人李四，李四受到了20点伤害，李四剩余生命：80"));
+    }
+
+    @Test
+    public void should_return_weaponSkill_damage(){
+        soldier.wearWeapon(weapon);
+        assertThat(soldier.beSkillAttacked(person,weaponSkill), is("李四受到2点毒性伤害, 李四剩余生命：98"));
+    }
+
+    @Test
+    public void should_return_can_attack_with_weapon_when_weapon_has_posion_damage(){
+        soldier.wearWeapon(weapon);
+        assertThat(soldier.attack(person)+"，"+soldier.beSkillAttacked(person, weaponSkill), is("战士张三用屠龙刀攻击了普通人李四，" +
+                "李四受到了20点伤害，李四中毒了，李四剩余生命：80，李四受到2点毒性伤害, 李四剩余生命：78"));
     }
 }

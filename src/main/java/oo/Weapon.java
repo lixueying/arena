@@ -5,8 +5,7 @@ import static java.lang.String.format;
 public class Weapon {
     private int damage;
     private final String name;
-    private int exDamage;
-    private Poison poison;
+    private WeaponSkill weaponSkill;
 
     public Weapon(String name, int damage) {
         this.name = name;
@@ -17,16 +16,12 @@ public class Weapon {
         return damage;
     }
 
-    public int getExDamage() {
-        return exDamage;
-    }
-
     public String beUsed() {
         return format("用%s", name);
     }
 
-    public void wearPoison(Poison poison){
-        this.poison = poison;
-        this.exDamage = poison.getPoisonDamage();
+    public void wearSkill(WeaponSkill weaponSkill){//武器装备技能
+        this.weaponSkill = weaponSkill;
+        this.damage += weaponSkill.getDamage();
     }
 }

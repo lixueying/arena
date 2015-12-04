@@ -1,25 +1,22 @@
 package oo;
 
-import static java.lang.String.format;
-
 /**
- * Created by lixueying on 15/12/3.
+ * Created by lixueying on 15/12/4.
  */
-public class Poison{
-    private int poisonDamage;
+public class Poison {
     private String name;
+    private int damage;
 
-    public Poison(String name, int poisonDamage) {
+    public Poison(String name, int damage){
         this.name = name;
-        this.poisonDamage = poisonDamage;
+        this.damage = damage;
     }
 
     public String getName() {
         return name;
     }
 
-
-    public int getPoisonDamage() {
-        return poisonDamage;
+    public int getDamage() {
+        return damage;
     }
 }
